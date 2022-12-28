@@ -11,6 +11,7 @@ var bgImg;
 var tower;
 var angle;
 var cannon;
+var cannon_ball
 
 function preload() {
   bgImg = loadImage("./assets/background.gif")
@@ -26,6 +27,7 @@ function setup() {
   tower = new Tower(150, 350, 160, 310);
   angle = 20;
   cannon = new Cannon(180,110,130,100, angle);
+  cannon_ball = new Cannon_ball(cannon.x, cannon.y)
 }
 
 function draw() {
@@ -36,5 +38,12 @@ function draw() {
   
   tower.display();
   cannon.display();
+  cannon_ball.display();
+}
+
+function keyReleased(){
+  if (keyCode == DOWN_ARROW){
+    cannon_ball.shoot();
+  }
 }
 
