@@ -2,7 +2,7 @@ class Cannon_ball{
    constructor(x,y,){
     this.x = x;
     this.y = y;
-    this.r = 30;
+    this.r = 23;
     this.image = loadImage("./assets/cannonball.png")
 
 
