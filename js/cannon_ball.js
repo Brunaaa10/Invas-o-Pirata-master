@@ -3,6 +3,7 @@ class Cannon_ball{
     this.x = x;
     this.y = y;
     this.r = 23;
+    this.trajectory = []
     this.image = loadImage("./assets/cannonball.png")
 
 
@@ -27,6 +28,17 @@ class Cannon_ball{
     rotate(angle)
     image(this.image, 0,0, this.r, this.r)
     pop()
+
+    if(this.body.velocity.x > 0 && this.body.position.x > 200){
+      var position = [this.body.position.x, this.body.position.y]
+      this.trajectory.push(position);
+    }
+
+    for(var i = 0; i < this.trajectory.length; i ++){
+
+      image(this.image, this.trajectory[i][0], this.trajectory[i][1], 5,5);
+
+    }
   }
 
   shoot(){
@@ -44,4 +56,5 @@ class Cannon_ball{
     
   }
 
+  
 }

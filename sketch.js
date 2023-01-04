@@ -13,6 +13,7 @@ var angle;
 var cannon;
 //var cannon_ball;
 var balls = []
+var boats = []
 
 
 function preload() {
@@ -34,6 +35,8 @@ function setup() {
   tower = new Tower(150, 350, 160, 310);
   angle = 20;
   cannon = new Cannon(180,110,130,100, angle);
+
+  
  
 }
 
@@ -51,7 +54,10 @@ function draw() {
     showCannonBalls(balls[i], i);
   }
   
+  showBoats();
+
   cannon.display();
+  
 }
 
 function keyReleased(){
@@ -80,6 +86,30 @@ function showCannonBalls(ball, index){
 
     balls.splice(index, 1);
   }
+}
 
+function showBoats(){
+  
+ if(boats.length > 0){
+    
+    if(boats.length < 4 && boats[boats.length - 1].body.position.x < width - 300){
+      var positions = [-130, -100, -120, -80, -20]
+      var position = random(positions);
+      var boat = new Boat(width, height -100, 200, 200, position);
+      boats.push(boat);
 
+  }
+  for(var i = 0; i < boats.length; i ++){
+      Body.setVelocity(boats[i].body, {x: -0.9, y: 0});
+      boats[i].display();
+  }
+
+  } else {
+    var boat = new Boat(width, height - 100, 200, 200, -100);
+    boats.push(boat);
+  }
+
+  
+
+  
 }
