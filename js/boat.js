@@ -24,10 +24,16 @@ class Boat{
     }
 
     removeBoats(i){
+        this.boatAnimation = boatBrokenAnimation;
+        this.speed = 0.05;
+        this.w = 300;
+        this.h = 300;
+        this.isBroken = true;
+        
         setTimeout(() => {
             World.remove(world, boats[i].body)
             boats.splice(i, 1);
-            this.isBroken = true;
+            
         }, 2000);
 
     }
